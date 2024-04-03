@@ -1,0 +1,28 @@
+.campo-documento {
+    margin-bottom: 20px;
+}
+
+.campo-documento label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.campo-documento input[type="text"] {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-confirmar {
+    padding: 8px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-confirmar:hover {
+    background-color: #0056b3;
+}

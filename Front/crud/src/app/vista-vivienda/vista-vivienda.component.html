@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Buscar Información de Vehículo</h5>
+        <form (ngSubmit)="buscarVivienda()">
+            <div class="form-group">
+                <label for="placa">Placa del Vehículo:</label>
+                <input type="text" class="form-control" id="placa" [(ngModel)]="idVivienda" [ngModelOptions]="{standalone: true}">
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="vivienda">
+    <h5>Información del Vehículo</h5>
+    <p><strong>Placa:</strong> {{ vivienda.placa }}</p>
+    <p><strong>Tipo de Vehículo:</strong> {{ vivienda.tipoVehiculo }}</p>
+    <p><strong>Documento del Propietario:</strong> {{ vivienda.documentoPropietario }}</p>
+</div>

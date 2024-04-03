@@ -22,6 +22,6 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE persona SET id_cabeza_familia = :updatedCabezaFamilia WHERE id_documento = :idDocumento")
+    @Query("UPDATE Persona p SET p.cabezaFamilia = :updatedCabezaFamilia WHERE p.idDocumento = :idDocumento")
     public int updateCabezaFamilia(@Param("updatedCabezaFamilia") Long updatedCabezaFamilia, @Param("idDocumento") Long idDocumento);
 }
