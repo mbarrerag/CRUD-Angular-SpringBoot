@@ -6,9 +6,7 @@ import java.util.Set;
 
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
@@ -60,8 +58,6 @@ public class Persona {
 
     @ManyToOne
     @JoinColumn(name = "id_cabeza_familia")
-    @JsonManagedReference
-    @JsonBackReference
     private Persona cabezaFamilia;
 
     @ManyToMany(mappedBy = "personas")
