@@ -1,0 +1,14 @@
+<div class="contenedor">
+    <div class="formulario">
+      <label for="documento">Documento de la Persona:</label>
+      <input type="text" id="documento" [(ngModel)]="documento" [ngModelOptions]="{standalone: true}">
+      <button (click)="buscarPersona()">Buscar</button>
+    </div>
+  
+    <div *ngIf="persona" class="informacion">
+      <h2>Información de la Persona</h2>
+      <p><strong>Documento:</strong> {{ persona.documento }}</p>
+      <p><strong>Nombre:</strong> {{ persona.nombre }}</p>
+      <!-- Agrega más campos de información aquí según sea necesario -->
+    </div>
+  </div>

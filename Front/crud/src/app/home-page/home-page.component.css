@@ -1,0 +1,41 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    height: 100vh;
+}
+
+.grid-item {
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: calc(50vh - 50px);
+}
+
+.persona {
+    background-color: #f6c6ea; /* Rosa */
+}
+
+.vehiculo {
+    background-color: #c9f5cb; /* Verde */
+}
+
+.evento {
+    background-color: #cfd6e4; /* Azul */
+}
+
+.vivienda {
+    background-color: #ffd700; /* Amarillo */
+}
+
+h2 {
+    margin: 0;
+    font-size: 80px;
+    color: #343a40;
+    text-align: center;
+}
+
+p {
+    font-size: 35px;
+}

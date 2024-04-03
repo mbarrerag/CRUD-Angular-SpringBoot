@@ -25,4 +25,17 @@ public class PersonaService {
     public Persona updatePersona(Persona persona) {
         return personaRepository.save(persona);
     }
+
+    public boolean updateCabezaFamilia(Long updatedCabezaFamilia, Long idDocumento) {
+        int updatedRegisters = personaRepository.updateCabezaFamilia(updatedCabezaFamilia, idDocumento);
+        return updatedRegisters > 0;
+    }
+
+    public Persona createPersona(Persona persona) {
+        return personaRepository.save(persona);
+    }
+
+    public void eliminarPersona(Long idDocumento) {
+        personaRepository.deleteById(idDocumento);
+    }
 }

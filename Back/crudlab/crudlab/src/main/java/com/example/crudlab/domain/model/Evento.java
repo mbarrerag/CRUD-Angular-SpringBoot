@@ -38,7 +38,7 @@ public class Evento {
     @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_lugar")
-    private Municipio lugar;
+    private Vivienda lugar;
 
     @ManyToMany
     @JoinTable(
