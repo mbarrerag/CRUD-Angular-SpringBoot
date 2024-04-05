@@ -19,7 +19,7 @@
                 <label for="documentoPropietario">Documento del Propietario:</label>
                 <input type="text" class="form-control" id="documentoPropietario" [(ngModel)]="documentoPropietario" [ngModelOptions]="{standalone: true}">
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary" (click)="postVehiculo()">Enviar</button>
         </form>
     </div>
 </div>

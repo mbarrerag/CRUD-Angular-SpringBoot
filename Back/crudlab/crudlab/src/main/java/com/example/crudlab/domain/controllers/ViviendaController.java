@@ -33,9 +33,9 @@ public class ViviendaController {
         return new ResponseEntity<Optional<Vivienda>>(vivienda, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/crearvivienda")
-    public ResponseEntity<Vivienda> createVivienda(@RequestBody Vivienda newVivienda) {
-        return new  ResponseEntity<>(viviendaService.createVivienda(newVivienda), HttpStatus.OK);
+    @PostMapping(value = "/crearvivienda/{municipio}/{propietario}")
+    public ResponseEntity<Vivienda> createVivienda(@PathVariable Long municipio, @PathVariable Long propietario, @RequestBody Vivienda newVivienda) {
+        return new  ResponseEntity<>(viviendaService.createVivienda(newVivienda, municipio, propietario), HttpStatus.OK);
     }
 
     @PutMapping(value = "/viviendas/{idVivienda}")

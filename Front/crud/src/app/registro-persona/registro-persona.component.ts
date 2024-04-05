@@ -25,9 +25,7 @@ export class RegistroPersonaComponent {
   id_vivienda: string = '';
   cabeza_familia: string = '';  
 
-  constructor(private registrarUsuarioService: RegistrarUsuarioService, 
-    private getViviendaService: GetViviendaService,
-    private getPersonaService: GetPersonaService) { }
+  constructor(private registrarUsuarioService: RegistrarUsuarioService) { }
 
   postPersona(): void {
 

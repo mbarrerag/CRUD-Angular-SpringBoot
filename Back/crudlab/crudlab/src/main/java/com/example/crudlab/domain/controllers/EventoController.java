@@ -51,9 +51,9 @@ public class EventoController {
         return new ResponseEntity<Evento>(updatedDBEvento, HttpStatus.OK);
     }
     
-    @PostMapping(value = "/crearevento")
-    public ResponseEntity<Evento> createEvento(@RequestBody Evento newEvento) {
-        return new  ResponseEntity<>(eventoService.createEvento(newEvento), HttpStatus.OK);
+    @PostMapping(value = "/crearevento/{lugar}")
+    public ResponseEntity<Evento> createEvento(@PathVariable Long lugar, @RequestBody Evento newEvento) {
+        return new  ResponseEntity<>(eventoService.createEvento(newEvento, lugar), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/eliminarevento/{idEvento}")

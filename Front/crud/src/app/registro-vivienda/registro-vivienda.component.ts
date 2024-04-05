@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RegistrarViviendaService } from './Services/registrar-vivienda.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro-vivienda',
@@ -13,7 +15,30 @@ export class RegistroViviendaComponent {
   identificadorMunicipio: string = '';
   identificadorPropietario: string = '';
 
-  updateVivienda(): void {
+  constructor(private registrarViviendaService: RegistrarViviendaService) { }
 
+  postVivienda(): void {
+    const datos = {
+      "direccion": this.direccion,
+      "municipio": this.identificadorMunicipio,
+      "propietario": this.identificadorPropietario
+    }
+    
+    this.registrarViviendaService.postVivienda(datos).subscribe(
+      () => {
+        Swal.fire(
+          '¡Éxito!',
+          'La acción fue ejecutada correctamente',
+          'success'
+        );
+      },
+      () => {
+        Swal.fire(
+          '¡Error!',
+          'La acción no se pudo llevar a cabo',
+          'error'
+        );
+      }
+    );
   }
 }

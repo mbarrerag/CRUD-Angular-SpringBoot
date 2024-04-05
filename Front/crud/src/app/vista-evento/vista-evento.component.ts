@@ -20,6 +20,7 @@ export class VistaEventoComponent {
   constructor(private getEventoService: GetEventoService, private getPersonaService: GetPersonaService) { }
 
   buscarEvento(): void {
+    this.personas = [];
     this.getEventoService.getEvento(this.idEvento).subscribe(      
       (data: any) => {
         this.evento = data;

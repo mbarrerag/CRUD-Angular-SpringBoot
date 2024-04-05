@@ -54,9 +54,9 @@ public class VehiculoController {
     }
 
     
-    @PostMapping(value = "/crearvehiculo")
-    public ResponseEntity<Vehiculo> createVehiculo(@RequestBody Vehiculo newVehiculo) {
-        return new  ResponseEntity<>(vehiculoService.createVehiculo(newVehiculo), HttpStatus.OK);
+    @PostMapping(value = "/crearvehiculo/{propietario}")
+    public ResponseEntity<Vehiculo> createVehiculo(@PathVariable Long propietario, @RequestBody Vehiculo newVehiculo) {
+        return new  ResponseEntity<>(vehiculoService.createVehiculo(newVehiculo, propietario), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/eliminarvehiculo/{idVehiculo}")

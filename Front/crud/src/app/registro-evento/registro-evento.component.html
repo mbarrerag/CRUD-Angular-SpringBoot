@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-      <h5 class="card-title">Formulario de Persona</h5>
+      <h5 class="card-title">Formulario de Evento</h5>
       <form>
         <div class="form-group">
           <label for="nombreEvento">Nombre del Evento:</label>
@@ -10,7 +10,7 @@
           <label for="identificadorLugar">Identificador del Lugar:</label>
           <input type="text" class="form-control" id="identificadorLugar" [(ngModel)]="identificadorLugar" [ngModelOptions]="{standalone: true}">
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary" (click)="postEvento()">Enviar</button>
       </form>
     </div>
   </div>
