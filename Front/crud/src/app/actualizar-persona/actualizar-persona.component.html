@@ -1,11 +1,16 @@
-<div class="card">
+<div class="contenedor" *ngIf="nombre1 === ''">
+  <div class="formulario">
+    <label for="documento">Documento de la Persona:</label>
+    <input type="text" id="documento_" [(ngModel)]="id_documento" [ngModelOptions]="{standalone: true}">
+    <button (click)="buscarPersona()">Buscar</button>
+  </div>
+</div>
+
+
+<div class="card" *ngIf="nombre1 !== ''">
     <div class="card-body">
       <h5 class="card-title">Actualizar Información de Persona</h5>
       <form (ngSubmit)="updatePersona()">
-        <div class="form-group">
-          <label for="documento">Documento:</label>
-          <input type="text" class="form-control" id="documento" [(ngModel)]="id_documento" [ngModelOptions]="{standalone: true}">
-        </div>
         <div class="form-group">
           <label for="primerNombre">Primer Nombre:</label>
           <input type="text" class="form-control" id="primerNombre" [(ngModel)]="nombre1" [ngModelOptions]="{standalone: true}">

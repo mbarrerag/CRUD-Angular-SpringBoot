@@ -41,8 +41,8 @@ public class PersonaController {
         return new ResponseEntity<Optional<Persona>>(persona, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/personas/{idDocumento}")
-    public ResponseEntity<Persona> updatePersona(@PathVariable Long idDocumento, @RequestBody Persona updatedPersona) {
+    @PutMapping(value = "/personas/{idDocumento}/{idVivienda}/{idCabezaFamilia}")
+    public ResponseEntity<Persona> updatePersona(@PathVariable Long idDocumento, @PathVariable Long idVivienda, @PathVariable Long idCabezaFamilia, @RequestBody Persona updatedPersona) {
 
         Persona persona = personaService.getPersona(idDocumento).orElseThrow(() -> new RuntimeException("La persona con documento: " + idDocumento + " no se encuentra en la Base de Datos"));
 
@@ -52,9 +52,8 @@ public class PersonaController {
         persona.setApellido2(updatedPersona.getApellido2());
         persona.setSexo(updatedPersona.getSexo());
         persona.setFechaNacimiento(updatedPersona.getFechaNacimiento());
-        persona.setVivienda(updatedPersona.getVivienda());
 
-        Persona updatedDBPersona = personaService.updatePersona(persona);
+        Persona updatedDBPersona = personaService.updatePersona(persona, idVivienda, idCabezaFamilia);
 
         return new ResponseEntity<Persona>(updatedDBPersona, HttpStatus.OK);
     }

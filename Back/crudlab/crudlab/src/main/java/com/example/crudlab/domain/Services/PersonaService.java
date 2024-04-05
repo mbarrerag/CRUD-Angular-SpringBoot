@@ -27,7 +27,11 @@ public class PersonaService {
         return personaRepository.findById(idDocumento);
     }
 
-    public Persona updatePersona(Persona persona) {
+    public Persona updatePersona(Persona persona, Long idVivienda, Long idCabezaFamilia) {
+        Vivienda vivienda = viviendaRepository.findById(idVivienda).orElseThrow(() -> new RuntimeException("Id vivienda no existente en la BD"));
+        persona.setVivienda(vivienda);
+        Persona cabeza = personaRepository.findById(idCabezaFamilia).orElseThrow(() -> new RuntimeException("Id cabeza de familia no existente en la BD"));
+        persona.setCabezaFamilia(cabeza);
         return personaRepository.save(persona);
     }
 
