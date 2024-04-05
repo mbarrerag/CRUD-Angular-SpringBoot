@@ -4,6 +4,7 @@ import { GetPersonaService } from '../vista-persona/Services/get-persona.service
 import { NgIf } from '@angular/common';
 import Swal from 'sweetalert2';
 import { UpdatePersonaService } from './Services/update-persona.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-actualizar-persona',
@@ -24,7 +25,8 @@ export class ActualizarPersonaComponent {
   cabeza_familia: string = '';  
 
   constructor(private getPersonaService: GetPersonaService,
-    private updatePersonaService: UpdatePersonaService) {}
+    private updatePersonaService: UpdatePersonaService,
+    private router: Router) {}
 
   buscarPersona(): void {
     this.getPersonaService.getPersona(this.id_documento).subscribe(
@@ -54,8 +56,6 @@ export class ActualizarPersonaComponent {
   }
 
   updatePersona(): void {
-    const vivienda: any = {};
-
     const data = {
       idDocumento: this.id_documento,
       nombre1: this.nombre1,
@@ -75,6 +75,7 @@ export class ActualizarPersonaComponent {
           'La acción fue ejecutada correctamente',
           'success'
         );
+        this.router.navigate(['/home']);
       },
       () => {
         Swal.fire(

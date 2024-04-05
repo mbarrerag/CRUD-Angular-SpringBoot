@@ -1,4 +1,12 @@
-<div class="card">
+<div class="contenedor" *ngIf="placa === ''">
+    <div class="formulario">
+      <label for="documento">Identificador del Vehiculo:</label>
+      <input type="text" id="documento_" [(ngModel)]="idVehiculo" [ngModelOptions]="{standalone: true}">
+      <button (click)="buscarVehiculo()">Buscar</button>
+    </div>
+  </div>
+
+<div class="card" *ngIf="placa !== ''">
     <div class="card-body">
         <h5 class="card-title">Actualizar Información de Vehículo</h5>
         <form (ngSubmit)="updateVehiculo()">
@@ -9,10 +17,10 @@
             <div class="form-group">
                 <label for="tipoVehiculo">Tipo de Vehículo:</label>
                 <select class="form-control" id="tipoVehiculo" [(ngModel)]="tipoVehiculo" [ngModelOptions]="{standalone: true}">
-                    <option value="Automóvil">Automóvil</option>
-                    <option value="Motocicleta">Motocicleta</option>
-                    <option value="Camión">Camión</option>
-                    <option value="Otros">Otros</option>
+                    <option value="Automóvil" [selected]="tipoVehiculo === 'Automóvil'">Automóvil</option>
+                    <option value="Moto" [selected]="tipoVehiculo === 'Moto'">Motocicleta</option>
+                    <option value="Camión" [selected]="tipoVehiculo === 'Camión'">Camión</option>
+                    <option value="Otros" [selected]="tipoVehiculo === 'Oros'">Otros</option>
                 </select>
             </div>
             <div class="form-group">

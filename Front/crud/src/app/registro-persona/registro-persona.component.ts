@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegistrarUsuarioService } from './Services/registrar-usuario.service';
-import { GetViviendaService } from '../vista-vivienda/Services/get-vivienda.service';
-import { GetPersonaService } from '../vista-persona/Services/get-persona.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +24,8 @@ export class RegistroPersonaComponent {
   id_vivienda: string = '';
   cabeza_familia: string = '';  
 
-  constructor(private registrarUsuarioService: RegistrarUsuarioService) { }
+  constructor(private registrarUsuarioService: RegistrarUsuarioService,
+    private router: Router) { }
 
   postPersona(): void {
 
@@ -42,12 +42,13 @@ export class RegistroPersonaComponent {
     }
 
     this.registrarUsuarioService.postPersona(datos).subscribe(
-      () => {
+      (data) => {
         Swal.fire(
           '¡Éxito!',
           'La acción fue ejecutada correctamente',
           'success'
         );
+        this.router.navigate(['/home']);
       },
       () => {
         Swal.fire(

@@ -39,16 +39,15 @@ public class VehiculoController {
         return new ResponseEntity<Optional<Vehiculo>>(vehiculo, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/vehiculos/{idVehiculo}")
-    public ResponseEntity<Vehiculo> updateVehiculo(@PathVariable Long idVehiculo, @RequestBody Vehiculo updatedVehiculo) {
+    @PutMapping(value = "/vehiculos/{idVehiculo}/{idPropietario}")
+    public ResponseEntity<Vehiculo> updateVehiculo(@PathVariable Long idVehiculo, @PathVariable Long idPropietario, @RequestBody Vehiculo updatedVehiculo) {
 
         Vehiculo vehiculo = vehiculoService.getVehiculo(idVehiculo).orElseThrow(() -> new RuntimeException("La vehiculo con documento: " + idVehiculo + " no se encuentra en la Base de Datos"));
 
         vehiculo.setPlaca(updatedVehiculo.getPlaca());
         vehiculo.setTipoVehiculo(updatedVehiculo.getTipoVehiculo());
-        vehiculo.setPropietario(updatedVehiculo.getPropietario());;
 
-        Vehiculo updatedDBVehiculo = vehiculoService.updateVehiculo(vehiculo);
+        Vehiculo updatedDBVehiculo = vehiculoService.updateVehiculo(vehiculo, idPropietario);
 
         return new ResponseEntity<Vehiculo>(updatedDBVehiculo, HttpStatus.OK);
     }

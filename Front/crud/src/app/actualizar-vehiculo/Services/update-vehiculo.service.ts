@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UpdateEventoService {
+export class UpdateVehiculoService {
 
   constructor(private http: HttpClient) { }
 
-  putEvento(data: any): any {
-    const url = `http://localhost:8180/api/eventos/${data.idEvento}/${data.lugar}`;
+  putVehiculo(data: any): any {
+    const url = `http://localhost:8180/api/vehiculos/${data.idVehiculo}/${data.idPropietario}`;
     return this.http.put(url, data);
   }
 }

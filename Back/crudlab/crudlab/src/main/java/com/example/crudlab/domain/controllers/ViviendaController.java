@@ -38,14 +38,14 @@ public class ViviendaController {
         return new  ResponseEntity<>(viviendaService.createVivienda(newVivienda, municipio, propietario), HttpStatus.OK);
     }
 
-    @PutMapping(value = "/viviendas/{idVivienda}")
-    public ResponseEntity<Vivienda> updateVivienda(@PathVariable Long idVivienda, @RequestBody Vivienda updatedVivienda) {
+    @PutMapping(value = "/viviendas/{idVivienda}/{municipio}/{propietario}")
+    public ResponseEntity<Vivienda> updateVivienda(@PathVariable Long idVivienda, @PathVariable Long municipio, @PathVariable Long propietario, @RequestBody Vivienda updatedVivienda) {
 
-        Vivienda Vivienda = viviendaService.getVivienda(idVivienda).orElseThrow(() -> new RuntimeException("La Vivienda con Vivienda: " + idVivienda + " no se encuentra en la Base de Datos"));
+        Vivienda vivienda = viviendaService.getVivienda(idVivienda).orElseThrow(() -> new RuntimeException("La Vivienda con Vivienda: " + idVivienda + " no se encuentra en la Base de Datos"));
 
-        Vivienda.setDireccion(updatedVivienda.getDireccion());
+        vivienda.setDireccion(updatedVivienda.getDireccion());
 
-        Vivienda updatedDBVivienda = viviendaService.updateVivienda(Vivienda);
+        Vivienda updatedDBVivienda = viviendaService.updateVivienda(vivienda, municipio, propietario);
 
         return new ResponseEntity<Vivienda>(updatedDBVivienda, HttpStatus.OK);
     }

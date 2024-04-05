@@ -27,7 +27,9 @@ public class VehiculoService {
         return vehiculoRepository.findById(idVehiculo);
     }
 
-    public Vehiculo updateVehiculo(Vehiculo vehiculo) {
+    public Vehiculo updateVehiculo(Vehiculo vehiculo, Long idPropietario) {
+        Persona propietario = personaRepository.findById(idPropietario).orElseThrow(() -> new RuntimeException("Persona no registrada en la BD"));
+        vehiculo.setPropietario(propietario);
         return vehiculoRepository.save(vehiculo);
     }
 

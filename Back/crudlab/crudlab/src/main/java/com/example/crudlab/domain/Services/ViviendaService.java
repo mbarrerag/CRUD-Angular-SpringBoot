@@ -36,7 +36,11 @@ public class ViviendaService {
         return viviendaRepository.save(vivienda);
     }
 
-    public Vivienda updateVivienda(Vivienda vivienda) {
+    public Vivienda updateVivienda(Vivienda vivienda, Long idMunicipio, Long idPropietario) {
+        Municipio municipio = municipioRepository.findById(idMunicipio).orElseThrow(() -> new RuntimeException("Municipio no existente en la BD"));
+        vivienda.setMunicipio(municipio);
+        Persona propietario = personaRepository.findById(idPropietario).orElseThrow(() -> new RuntimeException("Persona no existente en la BD"));
+        vivienda.setPropietario(propietario);
         return viviendaRepository.save(vivienda);
     }
 

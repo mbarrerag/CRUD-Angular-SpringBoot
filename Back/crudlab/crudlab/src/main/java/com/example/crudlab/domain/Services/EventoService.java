@@ -28,7 +28,9 @@ public class EventoService {
         return eventoRepository.findById(idEvento);
     }
 
-    public Evento updateEvento(Evento evento) {
+    public Evento updateEvento(Evento evento, Long lugar) {
+        Vivienda vivienda = viviendaRepository.findById(lugar).orElseThrow(() -> new RuntimeException("Vivienda no existente en la BD"));
+        evento.setLugar(vivienda);
         return eventoRepository.save(evento);
     }
 

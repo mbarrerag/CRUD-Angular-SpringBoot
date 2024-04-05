@@ -38,15 +38,14 @@ public class EventoController {
         return new ResponseEntity<Optional<Evento>>(evento, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/eventos/{idEvento}")
-    public ResponseEntity<Evento> updateEvento(@PathVariable Long idEvento, @RequestBody Evento updatedEvento) {
+    @PutMapping(value = "/eventos/{idEvento}/{lugar}")
+    public ResponseEntity<Evento> updateEvento(@PathVariable Long idEvento, @PathVariable Long lugar, @RequestBody Evento updatedEvento) {
 
         Evento evento = eventoService.getEvento(idEvento).orElseThrow(() -> new RuntimeException("La evento con documento: " + idEvento + " no se encuentra en la Base de Datos"));
 
         evento.setNombreEvento(updatedEvento.getNombreEvento());
-        evento.setLugar(updatedEvento.getLugar());
 
-        Evento updatedDBEvento = eventoService.updateEvento(evento);
+        Evento updatedDBEvento = eventoService.updateEvento(evento, lugar);
 
         return new ResponseEntity<Evento>(updatedDBEvento, HttpStatus.OK);
     }
