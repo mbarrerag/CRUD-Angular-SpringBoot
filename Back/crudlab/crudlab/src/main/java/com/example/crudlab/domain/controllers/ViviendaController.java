@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,13 +20,14 @@ import com.example.crudlab.domain.model.Vivienda;
 import com.example.crudlab.domain.Services.ViviendaService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class ViviendaController {
     
     @Autowired
     private ViviendaService viviendaService;
 
-    @GetMapping(value = "/vivienda/{idVivienda}")
+    @GetMapping(value = "/viviendas/{idVivienda}")
     public ResponseEntity<Optional<Vivienda>> getVivienda(@PathVariable Long idVivienda) {
         Optional<Vivienda> vivienda = viviendaService.getVivienda(idVivienda);
         return new ResponseEntity<Optional<Vivienda>>(vivienda, HttpStatus.OK);

@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.validation.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -28,38 +26,35 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDocumento")
 public class Persona {
     @Id
     @Column(name = "id_documento")
     private Long idDocumento;
 
-    @NotBlank
     private String nombre1;
 
     private String nombre2;
     
-    @NotBlank
     private String apellido1;
 
-    @NotBlank
     private String apellido2;
 
-    @NotBlank
     private String sexo;
 
-    @NotBlank
     @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
     @ManyToOne
     @JoinColumn(name = "id_vivienda")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVivienda")
     private Vivienda vivienda;
 
     @ManyToOne
     @JoinColumn(name = "id_cabeza_familia")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDocumento")
     private Persona cabezaFamilia;
 
     @ManyToMany(mappedBy = "personas")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idEvento")
     private Set<Evento> eventos = new HashSet<>();
 }

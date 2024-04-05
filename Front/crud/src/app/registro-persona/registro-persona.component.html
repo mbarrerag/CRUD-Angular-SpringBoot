@@ -34,14 +34,14 @@
           <input type="date" class="form-control" id="fechaNacimiento" [(ngModel)]="fecha_nacimiento" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="form-group">
-          <label for="vivienda">Vivienda:</label>
+          <label for="vivienda">Identificador de la Vivienda:</label>
           <input type="text" class="form-control" id="vivienda" [(ngModel)]="id_vivienda" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="form-group">
           <label for="cabezaFamilia">Cabeza de Familia:</label>
           <input type="text" class="form-control" id="cabezaFamilia" [(ngModel)]="cabeza_familia" [ngModelOptions]="{standalone: true}">
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" class="btn btn-primary" (click)="postPersona()">Enviar</button>
       </form>
     </div>
   </div>

@@ -3,17 +3,19 @@
         <h5 class="card-title">Buscar Información de Vehículo</h5>
         <form (ngSubmit)="buscarVehiculo()">
             <div class="form-group">
-                <label for="placa">Placa del Vehículo:</label>
-                <input type="text" class="form-control" id="placa" [(ngModel)]="placa" [ngModelOptions]="{standalone: true}">
+                <label for="placa">Identificador del Vehículo:</label>
+                <input type="text" class="form-control" id="placa" [(ngModel)]="idVehiculo" [ngModelOptions]="{standalone: true}">
             </div>
             <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
     </div>
 </div>
 
-<div *ngIf="vehiculo">
+<div *ngIf="vehiculo" class = "card card-body">
     <h5>Información del Vehículo</h5>
+    <p><strong>Identificador del Vehículo:</strong> {{vehiculo.idVehiculo}} </p>
     <p><strong>Placa:</strong> {{ vehiculo.placa }}</p>
     <p><strong>Tipo de Vehículo:</strong> {{ vehiculo.tipoVehiculo }}</p>
-    <p><strong>Documento del Propietario:</strong> {{ vehiculo.documentoPropietario }}</p>
+    <p><strong>Documento del Propietario:</strong> {{ vehiculo.propietario.idDocumento }}</p>
+    <p><strong>Nombre del propieatrio: </strong>{{vehiculo.propietario.nombre1}} {{vehiculo.propietario.nombre2}} {{vehiculo.propietario.apellido1}} {{vehiculo.propietario.apellido2}}</p>
 </div>

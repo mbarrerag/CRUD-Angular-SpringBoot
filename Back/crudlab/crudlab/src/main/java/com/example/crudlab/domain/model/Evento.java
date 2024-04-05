@@ -3,7 +3,8 @@ package com.example.crudlab.domain.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,9 +36,9 @@ public class Evento {
     @Column(name = "nombre_evento")
     private String nombreEvento;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_lugar")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVivienda")
     private Vivienda lugar;
 
     @ManyToMany
@@ -46,5 +47,6 @@ public class Evento {
         joinColumns = @JoinColumn(name = "id_evento"),
         inverseJoinColumns = @JoinColumn(name = "id_persona")
     )
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDocumento")
     private Set<Persona> personas = new HashSet<>();
 }

@@ -1,6 +1,7 @@
 package com.example.crudlab.domain.model;
 
-import javax.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,15 +28,13 @@ public class Vehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVehiculo;
 
-    @NotBlank
     private String placa;
 
-    @NotBlank
     @Column(name = "tipo_vehiculo")
     private String tipoVehiculo;
 
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_propietario")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idDocumento")
     private Persona propietario;
 }

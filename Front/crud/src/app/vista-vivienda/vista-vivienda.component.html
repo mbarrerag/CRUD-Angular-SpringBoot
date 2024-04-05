@@ -3,7 +3,7 @@
         <h5 class="card-title">Buscar Información de Vehículo</h5>
         <form (ngSubmit)="buscarVivienda()">
             <div class="form-group">
-                <label for="placa">Placa del Vehículo:</label>
+                <label for="placa">Identificador de la Vivienda</label>
                 <input type="text" class="form-control" id="placa" [(ngModel)]="idVivienda" [ngModelOptions]="{standalone: true}">
             </div>
             <button type="submit" class="btn btn-primary">Buscar</button>
@@ -11,9 +11,13 @@
     </div>
 </div>
 
-<div *ngIf="vivienda">
+<div *ngIf="vivienda" class="card card-body">
     <h5>Información del Vehículo</h5>
-    <p><strong>Placa:</strong> {{ vivienda.placa }}</p>
-    <p><strong>Tipo de Vehículo:</strong> {{ vivienda.tipoVehiculo }}</p>
-    <p><strong>Documento del Propietario:</strong> {{ vivienda.documentoPropietario }}</p>
+    <p><strong>Identificador de la Vivienda:</strong> {{ vivienda.idVivienda }}</p>
+    <p><strong>Direccion:</strong> {{ vivienda.direccion }}</p>
+    <p><strong>Municipio:</strong> {{ vivienda.municipio.nombreMunicipio }}</p>
+    <p><strong>Departamento:</strong> {{ vivienda.municipio.departamento.nombreDepartamento }}</p>
+    <p><strong>Documento del Propietario:</strong> {{ vivienda.propietario.idDocumento }}</p>
+    <p><strong>Nombre del Propietario:</strong> {{ vivienda.propietario.nombre1 }} {{ vivienda.propietario.nombre2 }} {{ vivienda.propietario.apellido1 }} {{ vivienda.propietario.apellido2 }}</p>
+
 </div>

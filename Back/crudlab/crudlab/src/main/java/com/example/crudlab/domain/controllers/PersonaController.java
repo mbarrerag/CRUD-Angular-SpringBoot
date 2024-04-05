@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.example.crudlab.domain.Services.PersonaService;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class PersonaController {
     
@@ -56,19 +58,10 @@ public class PersonaController {
 
         return new ResponseEntity<Persona>(updatedDBPersona, HttpStatus.OK);
     }
-
-    @PutMapping(value = "/personas/{updatedCabezaFamilia}/{idDocumento}")
-    public ResponseEntity<Optional<Persona>> updateCabezaFamilia(@PathVariable Long updatedCabezaFamilia, @PathVariable Long idDocumento) {
-        boolean result = personaService.updateCabezaFamilia(updatedCabezaFamilia, idDocumento);
-        if (result) {
-            return new ResponseEntity<Optional<Persona>>(personaService.getPersona(idDocumento), HttpStatus.OK);
-        }
-        return ResponseEntity.noContent().build();
-    }
     
-    @PostMapping(value = "/crearpersona")
-    public ResponseEntity<Persona> createPersona(@RequestBody Persona newPersona) {
-        return new  ResponseEntity<>(personaService.createPersona(newPersona), HttpStatus.OK);
+    @PostMapping(value = "/crearpersona/{idVivienda}/{idCabezaFamilia}")
+    public ResponseEntity<Persona> createPersona(@PathVariable Long idVivienda, @PathVariable Long idCabezaFamilia, @RequestBody Persona newPersona) {
+        return new  ResponseEntity<>(personaService.createPersona(newPersona, idVivienda, idCabezaFamilia), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/eliminarpersona/{idDocumento}")
