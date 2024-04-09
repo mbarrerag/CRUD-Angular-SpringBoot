@@ -1,0 +1,26 @@
+<div class="contenedor" *ngIf="nombreMunicipio === ''">
+    <div class="formulario">
+      <label for="documento">Identificador del Municipio:</label>
+      <input type="text" id="documento_" [(ngModel)]="identificadorMunicipio" [ngModelOptions]="{standalone: true}">
+      <button (click)="getMunicipio()">Buscar</button>
+    </div>
+  </div>
+  
+  <div class="card" *ngIf="nombreMunicipio !== ''">
+      <div class="card-body">
+        <h5 class="card-title">Actualizar Información de Municipio</h5>
+        <form (ngSubmit)="updateMunicipio()">
+          <div class="form-group">
+            <label for="nombreMunicipio">Nombre del Municipio:</label>
+            <input type="text" class="form-control" id="nombreMunicipio" [(ngModel)]="nombreMunicipio" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="identificadorVivienda">Identificador del alcalde:</label>
+            <input type="text" class="form-control" id="identificadorVivienda" [(ngModel)]="identificadorAlcalde" [ngModelOptions]="{standalone: true}">
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+      </div>
+    </div>
+  
+  

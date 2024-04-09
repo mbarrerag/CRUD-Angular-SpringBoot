@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { HttpClient} from '@angular/common/http';
 import { GetVehiculoService } from './Services/get-vehiculo.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class VistaVehiculoComponent {
   idVehiculo: string = '';
-  vehiculo: any;
+  @Input() vehiculo: any;
 
   constructor(private getVehiculoService: GetVehiculoService) { }
 

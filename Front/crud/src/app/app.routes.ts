@@ -17,6 +17,15 @@ import { RegistroViviendaComponent } from './registro-vivienda/registro-vivienda
 import { VistaViviendaComponent } from './vista-vivienda/vista-vivienda.component';
 import { EliminarViviendaComponent } from './eliminar-vivienda/eliminar-vivienda.component';
 import { ActualizarViviendaComponent } from './actualizar-vivienda/actualizar-vivienda.component';
+import { VistaPersonasComponent } from './vista-personas/vista-personas.component';
+import { VistaEventosComponent } from './vista-eventos/vista-eventos.component';
+import { VistaVehiculosComponent } from './vista-vehiculos/vista-vehiculos.component';
+import { VistaViviendasComponent } from './vista-viviendas/vista-viviendas.component';
+import { PersonaEventoComponent } from './persona-evento/persona-evento.component';
+import { ActualizarAlcaldeComponent } from './actualizar-alcalde/actualizar-alcalde.component';
+import { ActualizarGobernadorComponent } from './actualizar-gobernador/actualizar-gobernador.component';
+import { VistaVehiculoPlacaComponent } from './vista-vehiculo-placa/vista-vehiculo-placa.component';
+
 
 
 export const routes: Routes = [
@@ -37,6 +46,14 @@ export const routes: Routes = [
     { path: 'vistavivienda', component: VistaViviendaComponent },
     { path: 'borrarvivienda', component: EliminarViviendaComponent },
     { path: 'actualizacionvivienda', component: ActualizarViviendaComponent },
+    { path: 'vistaviviendas', component: VistaViviendasComponent },
+    { path: 'vistaeventos', component: VistaEventosComponent },
+    { path: 'vistavehiculos', component: VistaVehiculosComponent },
+    { path: 'vistapersonas', component: VistaPersonasComponent },
+    { path: 'personaevento', component: PersonaEventoComponent },
+    { path: 'actualizaralcalde', component: ActualizarAlcaldeComponent },
+    { path: 'actualizargobernador', component: ActualizarGobernadorComponent },  
+    { path: 'vistavehiculoplaca', component: VistaVehiculoPlacaComponent },
     { path: '',  component: HomePageComponent },
     { path: '**', component: HomePageComponent }
 ];

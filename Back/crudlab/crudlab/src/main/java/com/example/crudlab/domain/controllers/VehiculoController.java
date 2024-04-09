@@ -1,9 +1,10 @@
 package com.example.crudlab.domain.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,15 +29,20 @@ public class VehiculoController {
     private VehiculoService vehiculoService;
 
     @GetMapping(value = "/vehiculos")
-    public ResponseEntity<List<Vehiculo>> getAllVehiculos() {
-        List<Vehiculo> vehiculos = vehiculoService.getAllVehiculos();
-        return new ResponseEntity<List<Vehiculo>>(vehiculos, HttpStatus.OK);
+    public Page<Vehiculo> getAllVehiculos(Pageable pageable) {
+        return vehiculoService.getAllVehiculos(pageable);
     }
 
     @GetMapping(value = "/vehiculos/{idVehiculo}")
     public ResponseEntity<Optional<Vehiculo>> getVehiculo(@PathVariable Long idVehiculo) {
         Optional<Vehiculo> vehiculo = vehiculoService.getVehiculo(idVehiculo);
         return new ResponseEntity<Optional<Vehiculo>>(vehiculo, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/vehiculosplaca/{placa}")
+    public ResponseEntity<Vehiculo> getVehiculoPlaca(@PathVariable String placa) {
+        Vehiculo vehiculo = vehiculoService.getVehiculoPlaca(placa);
+        return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
     }
 
     @PutMapping(value = "/vehiculos/{idVehiculo}/{idPropietario}")

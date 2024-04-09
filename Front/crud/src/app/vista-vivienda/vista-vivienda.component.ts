@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { GetViviendaService } from './Services/get-vivienda.service';
@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class VistaViviendaComponent {
   idVivienda: string = '';
-  vivienda: any;
+  @Input() vivienda: any;
 
   constructor(private getViviendaService: GetViviendaService) { }
 

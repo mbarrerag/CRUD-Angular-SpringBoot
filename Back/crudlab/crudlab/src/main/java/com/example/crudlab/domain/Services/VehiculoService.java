@@ -1,9 +1,10 @@
 package com.example.crudlab.domain.Services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.crudlab.domain.model.Persona;
@@ -19,12 +20,16 @@ public class VehiculoService {
     @Autowired
     private PersonaRepository personaRepository;
 
-    public List<Vehiculo> getAllVehiculos() {
-        return vehiculoRepository.findAll();
+    public Page<Vehiculo> getAllVehiculos(Pageable pageable) {
+        return vehiculoRepository.findAll(pageable);
     }
 
     public Optional<Vehiculo> getVehiculo(Long idVehiculo) {
         return vehiculoRepository.findById(idVehiculo);
+    }
+
+    public Vehiculo getVehiculoPlaca(String placa) {
+        return ((vehiculoRepository.findByPlaca(placa)).get(0));
     }
 
     public Vehiculo updateVehiculo(Vehiculo vehiculo, Long idPropietario) {

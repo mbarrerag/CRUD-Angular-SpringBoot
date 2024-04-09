@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="!vivienda">
     <div class="card-body">
         <h5 class="card-title">Buscar Información de Vehículo</h5>
         <form (ngSubmit)="buscarVivienda()">
@@ -12,12 +12,12 @@
 </div>
 
 <div *ngIf="vivienda" class="card card-body">
-    <h5>Información del Vehículo</h5>
-    <p><strong>Identificador de la Vivienda:</strong> {{ vivienda.idVivienda }}</p>
-    <p><strong>Direccion:</strong> {{ vivienda.direccion }}</p>
-    <p><strong>Municipio:</strong> {{ vivienda.municipio.nombreMunicipio }}</p>
-    <p><strong>Departamento:</strong> {{ vivienda.municipio.departamento.nombreDepartamento }}</p>
-    <p><strong>Documento del Propietario:</strong> {{ vivienda.propietario.idDocumento }}</p>
-    <p><strong>Nombre del Propietario:</strong> {{ vivienda.propietario.nombre1 }} {{ vivienda.propietario.nombre2 }} {{ vivienda.propietario.apellido1 }} {{ vivienda.propietario.apellido2 }}</p>
+    <h5>Información de la Vivienda</h5>
+    <p><strong>Identificador de la Vivienda:</strong> {{ vivienda?.idVivienda }}</p>
+    <p><strong>Direccion:</strong> {{ vivienda?.direccion }}</p>
+    <p><strong>Municipio:</strong> {{ vivienda?.municipio?.nombreMunicipio }}</p>
+    <p><strong>Departamento:</strong> {{ vivienda?.municipio?.departamento?.nombreDepartamento }}</p>
+    <p><strong>Documento del Propietario:</strong> {{ vivienda?.propietario?.idDocumento }}</p>
+    <p><strong>Nombre del Propietario:</strong> {{ vivienda?.propietario?.nombre1 }} {{ vivienda?.propietario?.nombre2 }} {{ vivienda?.propietario?.apellido1 }} {{ vivienda?.propietario?.apellido2 }}</p>
 
 </div>

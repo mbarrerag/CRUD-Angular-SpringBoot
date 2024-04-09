@@ -1,9 +1,10 @@
 package com.example.crudlab.domain.Services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.crudlab.domain.model.Evento;
@@ -20,8 +21,8 @@ public class EventoService {
     @Autowired
     private ViviendaRepository viviendaRepository;
 
-    public List<Evento> getAllEventos() {
-        return eventoRepository.findAll();
+    public Page<Evento> getAllEventos(Pageable pageable) {
+        return eventoRepository.findAll(pageable);
     }
 
     public Optional<Evento> getEvento(Long idEvento) {

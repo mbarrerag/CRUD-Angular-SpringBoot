@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf, NgFor } from '@angular/common';
 import { GetPersonaService } from './Services/get-persona.service';
@@ -14,7 +14,7 @@ import { GetEventoService } from '../vista-evento/Services/get-evento.service';
 })
 export class VistaPersonaComponent {
   documento: string = '';
-  persona: any;
+  @Input() persona: any;
   eventos: string[] = [];
 
   constructor(private getPersonaService: GetPersonaService, private getEventoService: GetEventoService) { }

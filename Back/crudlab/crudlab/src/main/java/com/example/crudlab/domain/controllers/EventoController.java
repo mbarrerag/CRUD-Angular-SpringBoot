@@ -1,9 +1,10 @@
 package com.example.crudlab.domain.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,9 +28,8 @@ public class EventoController {
     private EventoService eventoService;
 
     @GetMapping(value = "/eventos")
-    public ResponseEntity<List<Evento>> getAllEventos() {
-        List<Evento> eventos = eventoService.getAllEventos();
-        return new ResponseEntity<List<Evento>>(eventos, HttpStatus.OK);
+    public Page<Evento> getAllEventos(Pageable pageable) {
+        return eventoService.getAllEventos(pageable);
     }
 
     @GetMapping(value = "/eventos/{idEvento}")

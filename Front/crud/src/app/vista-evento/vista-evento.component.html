@@ -1,5 +1,5 @@
 <div class="contenedor">
-    <div class="formulario">
+    <div class="formulario" *ngIf="!evento">
       <label for="documento">Identificador del Evento:</label>
       <input type="text" id="documento" [(ngModel)]="idEvento" [ngModelOptions]="{standalone: true}">
       <button (click)="buscarEvento()">Buscar</button>
@@ -7,9 +7,9 @@
   
     <div *ngIf="evento" class="informacion">
       <h2>Información del Evento</h2>
-      <p><strong>Identificador del Evento:</strong> {{ evento.idEvento }}</p>
-      <p><strong>Nombre:</strong> {{ evento.nombreEvento }}</p>
-      <p><strong>Lugar:</strong> {{ evento.lugar.direccion }} {{ evento.lugar.municipio.nombreMunicipio }}</p>
+      <p><strong>Identificador del Evento:</strong> {{ evento?.idEvento }}</p>
+      <p><strong>Nombre:</strong> {{ evento?.nombreEvento }}</p>
+      <p><strong>Lugar:</strong> {{ evento?.lugar?.direccion }} {{ evento?.lugar?.municipio?.nombreMunicipio }}</p>
       <p><strong>Asistentes:</strong></p>
       <ul>
         <li *ngFor="let persona of personas">{{persona}}</li>

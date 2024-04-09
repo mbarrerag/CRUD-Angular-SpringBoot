@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.crudlab.domain.model.Municipio;
+import com.example.crudlab.domain.model.Persona;
 import com.example.crudlab.domain.repository.MunicipioRepository;
 
 @Service
@@ -20,5 +21,11 @@ public class MunicipioService {
 
     public Optional<Municipio> getMunicipio(Long idMunicipio) {
         return municipioRepository.findById(idMunicipio);
+    }
+
+    public Municipio putMunicipio(Municipio municipio, Persona persona) {
+        municipio.setAlcalde(persona);
+        
+        return municipioRepository.save(municipio);
     }
 }

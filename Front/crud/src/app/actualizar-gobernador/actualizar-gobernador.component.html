@@ -1,0 +1,26 @@
+<div class="contenedor" *ngIf="nombreDepartamento === ''">
+    <div class="formulario">
+      <label for="documento">Identificador del Departamento:</label>
+      <input type="text" id="documento_" [(ngModel)]="identificadorDepartamento	" [ngModelOptions]="{standalone: true}">
+      <button (click)="getDepartamento()">Buscar</button>
+    </div>
+  </div>
+  
+  <div class="card" *ngIf="nombreDepartamento !== ''">
+      <div class="card-body">
+        <h5 class="card-title">Actualizar Información de Departamento</h5>
+        <form (ngSubmit)="updateDepartamento()">
+          <div class="form-group">
+            <label for="nombreDepartamento">Nombre del Departamento:</label>
+            <input type="text" class="form-control" id="nombreDepartamento" [(ngModel)]="nombreDepartamento" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="form-group">
+            <label for="identificadorVivienda">Identificador del gobernador:</label>
+            <input type="text" class="form-control" id="identificadorVivienda" [(ngModel)]="identificadorGobernador" [ngModelOptions]="{standalone: true}">
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+      </div>
+    </div>
+  
+  

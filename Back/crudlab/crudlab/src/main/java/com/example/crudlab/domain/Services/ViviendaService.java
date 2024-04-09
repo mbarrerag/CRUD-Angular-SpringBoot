@@ -3,6 +3,8 @@ package com.example.crudlab.domain.Services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.crudlab.domain.model.Municipio;
@@ -23,6 +25,10 @@ public class ViviendaService {
 
     @Autowired
     private MunicipioRepository municipioRepository;
+
+    public Page<Vivienda> getAllViviendas(Pageable pageable) {
+        return viviendaRepository.findAll(pageable);
+    }
 
     public Optional<Vivienda> getVivienda(Long idVivienda) {
         return viviendaRepository.findById(idVivienda);

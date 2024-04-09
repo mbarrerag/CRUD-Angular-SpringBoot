@@ -3,6 +3,8 @@ package com.example.crudlab.domain.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +28,11 @@ public class ViviendaController {
     
     @Autowired
     private ViviendaService viviendaService;
+
+    @GetMapping(value = "/viviendas")
+    public Page<Vivienda> getAllViviendas(Pageable pageable) {
+        return viviendaService.getAllViviendas(pageable);
+    }
 
     @GetMapping(value = "/viviendas/{idVivienda}")
     public ResponseEntity<Optional<Vivienda>> getVivienda(@PathVariable Long idVivienda) {

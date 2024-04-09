@@ -1,10 +1,11 @@
 package com.example.crudlab.domain.controllers;
 
-
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,15 +31,20 @@ public class PersonaController {
     private PersonaService personaService;
 
     @GetMapping(value = "/personas")
-    public ResponseEntity<List<Persona>> getAllPersonas() {
-        List<Persona> personas = personaService.getAllPersonas();
-        return new ResponseEntity<List<Persona>>(personas, HttpStatus.OK);
+    public Page<Persona> getAllPersonas(Pageable pageable) {
+        return personaService.getAllPersonas(pageable);
     }
 
     @GetMapping(value = "/personas/{idDocumento}")
     public ResponseEntity<Optional<Persona>> getPersona(@PathVariable Long idDocumento) {
         Optional<Persona> persona = personaService.getPersona(idDocumento);
         return new ResponseEntity<Optional<Persona>>(persona, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/personas/eventos/{idDocumento}/{idEvento}")
+    public ResponseEntity<Void> addPersonaEvento(@PathVariable Long idDocumento, @PathVariable Long idEvento, @RequestBody Map<String,Object> requestBody) {
+
+        return personaService.addPersonaEvento(idDocumento, idEvento);
     }
 
     @PutMapping(value = "/personas/{idDocumento}/{idVivienda}/{idCabezaFamilia}")
