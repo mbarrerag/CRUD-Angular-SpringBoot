@@ -1,5 +1,6 @@
 package com.example.crudlab.domain.controllers;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ public class PersonaController {
 
     @PutMapping(value = "/personas/eventos/{idDocumento}/{idEvento}")
     public ResponseEntity<Void> addPersonaEvento(@PathVariable Long idDocumento, @PathVariable Long idEvento, @RequestBody Map<String,Object> requestBody) {
-
+        
         return personaService.addPersonaEvento(idDocumento, idEvento);
     }
 
@@ -59,6 +60,15 @@ public class PersonaController {
         persona.setSexo(updatedPersona.getSexo());
         persona.setFechaNacimiento(updatedPersona.getFechaNacimiento());
 
+
+        // Obtener la fecha actual
+        LocalDate fechaActual = LocalDate.now();
+
+        // Verificar si la fecha es anterior a la fecha actual
+        if (!updatedPersona.getFechaNacimiento().isBefore(fechaActual)) {
+            throw new RuntimeException("Fecha No Válida");
+        } 
+
         Persona updatedDBPersona = personaService.updatePersona(persona, idVivienda, idCabezaFamilia);
 
         return new ResponseEntity<Persona>(updatedDBPersona, HttpStatus.OK);
@@ -66,6 +76,13 @@ public class PersonaController {
     
     @PostMapping(value = "/crearpersona/{idVivienda}/{idCabezaFamilia}")
     public ResponseEntity<Persona> createPersona(@PathVariable Long idVivienda, @PathVariable Long idCabezaFamilia, @RequestBody Persona newPersona) {
+        LocalDate fechaActual = LocalDate.now();
+
+        // Verificar si la fecha es anterior a la fecha actual
+        if (!newPersona.getFechaNacimiento().isBefore(fechaActual)) {
+            throw new RuntimeException("Fecha No Válida");
+        } 
+
         return new  ResponseEntity<>(personaService.createPersona(newPersona, idVivienda, idCabezaFamilia), HttpStatus.OK);
     }
 
