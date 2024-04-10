@@ -1,30 +1,30 @@
 # Stage 1: Build the application
 FROM ubuntu:latest AS build
 
-# Install OpenJDK 18
+# Instalar OpenJDK 18
 RUN apt-get update && \
     apt-get install -y openjdk-18-jdk
 
-# Set the working directory in the container
+# Establecer el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copy the Maven project and build the application
+# Copiar el proyecto Maven y construir la aplicación
 COPY . .
 
-# Build the Spring Boot application using Gradle
+# Construir la aplicación Spring Boot usando Gradle
 RUN ./gradlew bootJar --no-daemon
 
-# Stage 2: Create the final image
+# Stage 2: Crear la imagen final
 FROM openjdk:18-jdk
 
-# Expose port 8180
+# Exponer el puerto 8180
 EXPOSE 8180
 
-# Set the working directory in the container
+# Establecer el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copy the JAR file from the build stage
+# Copiar el archivo JAR desde la etapa de construcción
 COPY --from=build /app/build/libs/crudlab-1.jar /app.jar
 
-# Define the command to run the application
+# Definir el comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "/app.jar"]
