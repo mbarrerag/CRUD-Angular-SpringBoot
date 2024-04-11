@@ -62,6 +62,7 @@ Ver [Laboratorio CRUD - Grupo 3 - EventosUN.pdf](https://github.com/mbarrerag/CR
   ```
   Password: `fQsJRQHkxf73QSYUhadn`
 - **Backend (Railway):** [CRUD-Angular-SpringBoot Backend](https://crud-angular-springboot-production.up.railway.app/api/personas)
+- **Front (Vercel)**
 
 Para acceder a otros endpoints, reemplace `/personas` en la URL por el nombre del endpoint deseado. Los endpoints disponibles se detallan en el documento adjunto.
 
